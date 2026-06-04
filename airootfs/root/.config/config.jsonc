@@ -1,0 +1,103 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 8,
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/dock"
+    ],
+    "modules-center": [
+        "clock",
+        "custom/notification"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "custom/gpu",
+        "tray",
+        "network",
+        "tray",
+        "hyprland/language"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true
+    },
+    "hyprland/language": {
+        "format": ""
+    },
+    "clock": {
+        "format": "  {:%H:%M  |    %a %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip": true
+    },
+    "memory": {
+        "interval": 10,
+        "format": "RAM {percentage}%",
+        "states": {
+            "warning": 80,
+            "critical": 95
+        }
+    },
+    "custom/gpu": {
+        "exec": "cat /sys/class/hwmon/hwmon*/device/gpu_busy_percent",
+        "format": " GPU {}%",
+        "interval": 2
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "  ",
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/dock": {
+        "format": "⬢",
+        "on-click": "nwg-dock-hyprland",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
+        "format-icons": {
+            "headphone": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "env GTK_THEME=adw-gtk3-dark pavucontrol"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-ethernet": "IP {ipaddr}/{cidr}",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "on-click": "kitty -e nmtui"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    }
+}

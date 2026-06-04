@@ -1,0 +1,76 @@
+/* Paleta de colores */
+@define-color bg #1e2030;
+@define-color fg #cad3f5;
+@define-color module_bg #24273a;
+@define-color accent #c6a0f6;
+@define-color green #a6da95;
+@define-color red #ed8796;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: @fg;
+}
+
+/* Estilo general para todos los módulos */
+#language,
+#workspaces,
+#clock,
+#pulseaudio,
+#battery,
+#network,
+#cpu,
+#memory,
+#custom-dock,
+#custom-gpu,
+#tray {
+    background-color: @module_bg;
+    padding: 4px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Espacios de trabajo */
+#workspaces button {
+    padding: 0 6px;
+    color: @fg;
+}
+
+#workspaces button.active {
+    color: @accent;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: @green;
+}
+
+/* Reloj Central */
+#clock {
+    color: @accent;
+    font-weight: bold;
+}
+
+/* Módulos de la derecha */
+#custom-gpu,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#language {
+    color: @green;
+}
+
+@keyframes blink {
+    to {
+        background-color: @red;
+        color: @bg;
+    }
+}
